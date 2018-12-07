@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Verificamos si el primer parametro empieza con -, en caso de que si, comparamos y vemos si es -t, que es valido, en caso contrario mandamos mensaje de error
+######################################################
+## Verificamos si el primer parametro empieza con - ## en caso de que si, comparamos y vemos si es -t, que es valido, en caso contrario mandamos mensaje de error
+######################################################
 LISTAR=0
 if [ `echo $1 | cut -c1` = "-" >/dev/null 2>/dev/null ]    #identificamos si empieza o no con -, si no empieza sigue normal porque es un archivo
 then
@@ -14,14 +16,21 @@ then
         fi
 fi
 
-# Controlamos si se ingresaron o no parametros, si es 0 envia mensaje por salida estandard de errores, y envia codigo de error 3
+
+##################################################
+## Controlamos si se ingresaron o no parametros ## si es 0 envia mensaje por salida estandard de errores, y envia codigo de error 3
+##################################################
 if [ "$#" = 0 ]
 then
         echo "Cantidad de parametros erronea, por favor ingrese algun archivo a listar" >&2
         exit 3
 fi
 
-#Desplegamos info de archivos
+
+
+##################################
+## Desplegamos info de archivos ##
+##################################
 EXISTE=0
 NOEXISTE=0
 for i in "$@"
@@ -91,18 +100,28 @@ do
 
 done
 
+
+###############################################
+## Verificamos si existio algun archivo o no ##
+###############################################
 if [ $EXISTE = 0 ]
 then
         echo "NO EXISTE NINGUN ARCHIVO DE LOS SOLICITADOS" >&2
         exit 4
 fi
 
+##########################################
+## Verificamos si se ingreso o no el -t ##
+##########################################
 if [ $LISTAR = 1 ]
 then
         echo "+++++++++++++++++++++++++++++"
         echo "Se han listado" $EXISTE "archivos."
 fi
 
+########################################################################
+## Si existio algun archivo, enviamos codigo de error correspondiente ##
+########################################################################
 if [ $NOEXISTE = 1 ]
 then
         exit 1
