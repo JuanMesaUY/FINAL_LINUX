@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Formulario de Consulta</title>
+</head>
+
+<body>
+    <p align="justify"><b>Formulario de Consulta de archivos</b></p>
+    <br>
+    <p align="justify">Ingresar los nombres de los archivos en la siguiente casilla "Archivos" para su consulta separados por ; .</p>
+    <br>
+    <p align="justify">Marcar la casilla "Mostrar total de archivos listados.</p>
+    <br>
+        <!--Campo de nombres de archivos para enviar a CGI-->
+        <form
+             method="get" action="http://localhost/cgi-bin/mycgi">
+            <b>Archivos</b>
+            <input name="archivos" size="60">
+            <br>
+            Mostrar total de archivos listados
+            <input type="checkbox" name="check" value="t">
+            <input type="submit" value="Enviar">
+        </form>
+    <br>
+</body>
+</html>
